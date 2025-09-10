@@ -23,7 +23,14 @@
     "test:backend": "cd apps/backend && npm test",
     "test:e2e": "playwright test",
     "test:coverage": "npm run test:frontend -- --coverage && npm run test:backend -- --coverage",
-    "storybook": "cd apps/frontend && npm run storybook"
+    "storybook": "cd apps/frontend && npm run storybook",
+    "mobile:start": "cd mobile && npm start",
+    "mobile:android": "cd mobile && npm run android",
+    "mobile:ios": "cd mobile && npm run ios",
+    "k8s:deploy": "kubectl apply -f k8s/",
+    "terraform:init": "cd terraform && terraform init",
+    "terraform:plan": "cd terraform && terraform plan",
+    "terraform:apply": "cd terraform && terraform apply"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
