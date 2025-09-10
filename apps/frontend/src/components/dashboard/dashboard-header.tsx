@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { Search, Bell, User } from 'lucide-react'
 
 export function DashboardHeader() {
@@ -15,6 +16,7 @@ export function DashboardHeader() {
               <a href="/analytics" className="text-sm text-muted-foreground hover:text-foreground">Analytics</a>
               <a href="/supplier" className="text-sm text-muted-foreground hover:text-foreground">Supplier</a>
               <a href="/customer" className="text-sm text-muted-foreground hover:text-foreground">Customer</a>
+              <a href="/settings" className="text-sm text-muted-foreground hover:text-foreground">Settings</a>
             </nav>
           </div>
           
@@ -30,6 +32,7 @@ export function DashboardHeader() {
             <Button variant="ghost" size="icon">
               <Bell className="h-4 w-4" />
             </Button>
+            <ThemeToggle />
             <Button variant="ghost" size="icon">
               <User className="h-4 w-4" />
             </Button>

@@ -96,19 +96,21 @@ Access the application:
 - [x] Model performance tracking
 - [x] Confidence scoring
 
-### Phase 4 - Portals (3-4 weeks)
-- [ ] Supplier portal
-- [ ] Customer portal
-- [ ] Multi-tenant support
-- [ ] Role-based access control
-- [ ] Portal dashboards
-- [ ] Notification preferences
+### Phase 4 - Portals ✅
+- [x] Supplier portal
+- [x] Customer portal
+- [x] Multi-tenant support
+- [x] Role-based access control
+- [x] Portal dashboards
+- [x] Notification preferences
 
 ### Phase 5 - Hardening (ongoing)
 - [ ] Performance optimization
 - [ ] Security hardening
 - [ ] Observability
 - [ ] Production deployment
+- [ ] Theme customization
+- [ ] Advanced settings
 
 ## 🧪 Testing
 
