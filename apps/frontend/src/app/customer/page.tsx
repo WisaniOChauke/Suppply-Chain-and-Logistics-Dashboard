@@ -2,7 +2,8 @@
 
 import { EnhancedCustomerDashboard } from '@/components/portal/enhanced-customer-dashboard'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Home, BarChart3, Package, Users, Settings } from 'lucide-react'
+import { ArrowLeft, Home, BarChart3, Package, Users, Settings, User, Palette, LogOut } from 'lucide-react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
 
 export default function CustomerPortalPage() {
@@ -44,12 +45,29 @@ export default function CustomerPortalPage() {
                   Supplier Portal
                 </Link>
               </Button>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/settings" className="flex items-center">
-                  <Settings className="h-4 w-4 mr-2" />
-                  Settings
-                </Link>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="flex items-center">
+                    <Settings className="h-4 w-4 mr-2" />
+                    Settings
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem>
+                    <User className="mr-2 h-4 w-4" />
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Palette className="mr-2 h-4 w-4" />
+                    Theme
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </nav>
           </div>
         </div>
