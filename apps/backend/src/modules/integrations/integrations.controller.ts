@@ -1,12 +1,16 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
 import { CarrierService } from './carriers/carrier.service';
 import { WeatherService } from './weather/weather.service';
+import { PaymentService } from './payment/payment.service';
+import { SAPService } from './erp/sap.service';
 
 @Controller('integrations')
 export class IntegrationsController {
   constructor(
     private carrierService: CarrierService,
     private weatherService: WeatherService,
+    private paymentService: PaymentService,
+    private sapService: SAPService,
   ) {}
 
   @Get('carriers/track/:carrier/:trackingNumber')
@@ -41,5 +45,24 @@ export class IntegrationsController {
   @Get('weather/impact/:shipmentId')
   async getWeatherImpact(@Param('shipmentId') shipmentId: string) {
     return this.weatherService.getWeatherImpact(shipmentId);
+  }
+
+  @Post('payment/process')
+  async processPayment(@Body() paymentData: { shipmentId: string; amount: number; paymentMethodId: string }) {
+    return this.paymentService.processShippingPayment(
+      paymentData.shipmentId,
+      paymentData.amount,
+      paymentData.paymentMethodId
+    );
+  }
+
+  @Post('erp/sync-shipment')
+  async syncShipmentToERP(@Body() data: { shipmentId: string; shipmentData: any }) {
+    return this.sapService.syncShipmentData(data.shipmentId, data.shipmentData);
+  }
+
+  @Get('erp/inventory/:productId')
+  async getInventory(@Param('productId') productId: string) {
+    return this.sapService.getInventoryData(productId);
   }
 }

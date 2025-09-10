@@ -13,7 +13,93 @@ interface WeatherData {
 @Injectable()
 export class WeatherService {
   async getWeatherAlongRoute(route: { origin: any; destination: any; waypoints?: any[] }): Promise<WeatherData[]> {
-    // Mock weather data - replace with real weather API
+    try {
+      const weatherData: WeatherData[] = [];
+      
+      // Get weather for origin
+      const originWeather = await this.getWeatherForLocation(route.origin);
+      weatherData.push(originWeather);
+      
+      // Get weather for waypoints if any
+      if (route.waypoints) {
+        for (const waypoint of route.waypoints) {
+          const waypointWeather = await this.getWeatherForLocation(waypoint);
+          weatherData.push(waypointWeather);
+        }
+      }
+      
+      // Get weather for destination
+      const destinationWeather = await this.getWeatherForLocation(route.destination);
+      weatherData.push(destinationWeather);
+      
+      return weatherData;
+    } catch (error) {
+      console.error('Weather API error:', error);
+      return this.getMockWeatherData();
+    }
+  }
+
+  private async getWeatherForLocation(location: { lat: number; lng: number; name?: string }): Promise<WeatherData> {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${process.env.WEATHER_API_KEY}&units=metric`
+    );
+    
+    const data = await response.json();
+    
+    return {
+      location: location.name || data.name,
+      temperature: Math.round(data.main.temp),
+      condition: this.mapWeatherCondition(data.weather[0].main),
+      windSpeed: Math.round(data.wind.speed * 3.6), // Convert m/s to km/h
+      visibility: data.visibility ? Math.round(data.visibility / 1000) : 10,
+      alerts: await this.getWeatherAlerts(location.lat, location.lng),
+      riskLevel: this.calculateWeatherRisk(data),
+    };
+  }
+
+  private async getWeatherAlerts(lat: number, lng: number): Promise<string[]> {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&appid=${process.env.WEATHER_API_KEY}&exclude=minutely,hourly,daily`
+      );
+      
+      const data = await response.json();
+      return data.alerts?.map((alert: any) => alert.event) || [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  private mapWeatherCondition(condition: string): string {
+    const conditionMap: { [key: string]: string } = {
+      'Clear': 'Clear',
+      'Clouds': 'Cloudy',
+      'Rain': 'Rain',
+      'Drizzle': 'Rain',
+      'Thunderstorm': 'Storm',
+      'Snow': 'Snow',
+      'Mist': 'Foggy',
+      'Fog': 'Foggy',
+    };
+    return conditionMap[condition] || condition;
+  }
+
+  private calculateWeatherRisk(weatherData: any): 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' {
+    const condition = weatherData.weather[0].main;
+    const windSpeed = weatherData.wind.speed * 3.6; // km/h
+    const visibility = weatherData.visibility / 1000; // km
+    
+    if (condition === 'Thunderstorm' || windSpeed > 50 || visibility < 1) {
+      return 'CRITICAL';
+    } else if (condition === 'Snow' || condition === 'Rain' || windSpeed > 30 || visibility < 3) {
+      return 'HIGH';
+    } else if (condition === 'Clouds' || windSpeed > 20 || visibility < 5) {
+      return 'MEDIUM';
+    }
+    return 'LOW';
+  }
+
+  private getMockWeatherData(): WeatherData[] {
     const conditions = ['Clear', 'Cloudy', 'Rain', 'Snow', 'Storm'];
     const alerts = ['Heavy Rain Warning', 'Snow Advisory', 'High Wind Alert'];
     
