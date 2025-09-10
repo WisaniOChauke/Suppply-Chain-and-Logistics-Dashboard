@@ -1,16 +1,36 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
-import { useAuth } from '@/hooks'
-import { Search, Bell, User, LogOut } from 'lucide-react'
+import { useAuth } from '@/hooks/use-auth'
+import { Search, Bell, User, LogOut, ArrowLeft } from 'lucide-react'
+import { useRouter, usePathname } from 'next/navigation'
 
 export function DashboardHeader() {
   const { user, logout } = useAuth()
+  const router = useRouter()
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
 
   return (
     <header className="border-b bg-card">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
+            {!isHomePage && (
+              <>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => router.back()}
+                  className="group hover:bg-muted/50 transition-all duration-200 hover:scale-105"
+                >
+                  <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-0.5 transition-transform" />
+                  <span className="text-sm font-medium">Back</span>
+                </Button>
+                <div className="h-6 w-px bg-border" />
+              </>
+            )}
             <h1 className="text-2xl font-bold text-foreground">Supply Chain Dashboard</h1>
             <nav className="hidden md:flex space-x-4">
               <a href="/" className="text-sm text-muted-foreground hover:text-foreground">Dashboard</a>
