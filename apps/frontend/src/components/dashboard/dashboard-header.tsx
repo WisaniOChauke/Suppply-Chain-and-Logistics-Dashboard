@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { useAuth } from '@/hooks/use-auth'
-import { Search, Bell, User, LogOut, ArrowLeft, Settings } from 'lucide-react'
+import { Search, Bell, User, LogOut, ArrowLeft, Settings, Moon, Sun, Monitor, HelpCircle, Shield, Palette } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   DropdownMenu,
@@ -64,31 +64,90 @@ export function DashboardHeader() {
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Settings className="h-4 w-4" />
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  className="relative hover:bg-muted/50 transition-all duration-200 hover:scale-105"
+                >
+                  <Settings className="h-4 w-4 transition-transform group-hover:rotate-90" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuItem className="flex items-center justify-between">
-                  <span>Theme</span>
-                  <ThemeToggle />
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
+              <DropdownMenuContent 
+                align="end" 
+                className="w-72 p-2 bg-background/95 backdrop-blur-sm border shadow-lg"
+                sideOffset={8}
+              >
+                {/* User Profile Section */}
                 {user ? (
-                  <>
-                    <DropdownMenuItem disabled>
-                      <User className="mr-2 h-4 w-4" />
-                      <span>{user.name}</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={logout}>
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>Sign out</span>
-                    </DropdownMenuItem>
-                  </>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <User className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-sm truncate">{user.name}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                    </div>
+                  </div>
                 ) : (
-                  <DropdownMenuItem>
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                      <User className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium text-sm">Guest User</p>
+                      <p className="text-xs text-muted-foreground">Sign in to access features</p>
+                    </div>
+                  </div>
+                )}
+                
+                <DropdownMenuSeparator className="my-2" />
+                
+                {/* Theme Selection */}
+                <div className="space-y-1">
+                  <div className="px-2 py-1.5">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Appearance</p>
+                  </div>
+                  <DropdownMenuItem className="flex items-center justify-between p-2 rounded-md">
+                    <div className="flex items-center gap-2">
+                      <Palette className="h-4 w-4" />
+                      <span className="text-sm">Theme</span>
+                    </div>
+                    <ThemeToggle />
+                  </DropdownMenuItem>
+                </div>
+                
+                <DropdownMenuSeparator className="my-2" />
+                
+                {/* Quick Actions */}
+                <div className="space-y-1">
+                  <div className="px-2 py-1.5">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Quick Actions</p>
+                  </div>
+                  <DropdownMenuItem className="p-2 rounded-md cursor-pointer hover:bg-muted/50">
+                    <Shield className="mr-2 h-4 w-4" />
+                    <span className="text-sm">Privacy & Security</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="p-2 rounded-md cursor-pointer hover:bg-muted/50">
+                    <HelpCircle className="mr-2 h-4 w-4" />
+                    <span className="text-sm">Help & Support</span>
+                  </DropdownMenuItem>
+                </div>
+                
+                <DropdownMenuSeparator className="my-2" />
+                
+                {/* Account Actions */}
+                {user ? (
+                  <DropdownMenuItem 
+                    onClick={logout}
+                    className="p-2 rounded-md cursor-pointer text-red-600 hover:bg-red-50 hover:text-red-700 dark:hover:bg-red-950 dark:hover:text-red-400"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span className="text-sm font-medium">Sign out</span>
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem className="p-2 rounded-md cursor-pointer hover:bg-primary/5 text-primary">
                     <User className="mr-2 h-4 w-4" />
-                    <span>Sign in</span>
+                    <span className="text-sm font-medium">Sign in</span>
                   </DropdownMenuItem>
                 )}
               </DropdownMenuContent>

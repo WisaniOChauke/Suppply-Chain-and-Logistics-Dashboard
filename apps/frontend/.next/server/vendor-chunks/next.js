@@ -1819,6 +1819,16 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
+/***/ "(ssr)/../../node_modules/next/link.js":
+/*!***************************************!*\
+  !*** ../../node_modules/next/link.js ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__(/*! ./dist/client/link */ \"(ssr)/../../node_modules/next/dist/client/link.js\");\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi4vLi4vbm9kZV9tb2R1bGVzL25leHQvbGluay5qcyIsIm1hcHBpbmdzIjoiQUFBQUEsbUhBQXlCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vQHN1cHBseS1jaGFpbi9mcm9udGVuZC8uLi8uLi9ub2RlX21vZHVsZXMvbmV4dC9saW5rLmpzP2JhNmYiXSwic291cmNlc0NvbnRlbnQiOlsibW9kdWxlLmV4cG9ydHMgPSByZXF1aXJlKCcuL2Rpc3QvY2xpZW50L2xpbmsnKVxuIl0sIm5hbWVzIjpbIm1vZHVsZSIsImV4cG9ydHMiLCJyZXF1aXJlIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/../../node_modules/next/link.js\n");
+
+/***/ }),
+
 /***/ "(ssr)/../../node_modules/next/navigation.js":
 /*!*********************************************!*\
   !*** ../../node_modules/next/navigation.js ***!
