@@ -1,6 +1,5 @@
 {
   "/customer/page": "app/customer/page.js",
-  "/settings/page": "app/settings/page.js",
   "/supplier/page": "app/supplier/page.js",
   "/integrations/page": "app/integrations/page.js",
   "/analytics/page": "app/analytics/page.js",
