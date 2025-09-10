@@ -18,9 +18,12 @@
     "test": "npm run test:frontend && npm run test:backend",
     "test:frontend": "cd apps/frontend && npm test",
     "test:backend": "cd apps/backend && npm test",
+    "test:e2e": "playwright test",
+    "test:coverage": "npm run test:frontend -- --coverage && npm run test:backend -- --coverage",
     "storybook": "cd apps/frontend && npm run storybook"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
     "concurrently": "^8.2.2"
   }
 }
