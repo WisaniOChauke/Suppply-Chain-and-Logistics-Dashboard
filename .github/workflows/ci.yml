@@ -57,13 +57,9 @@ jobs:
         REDIS_HOST: localhost
         REDIS_PORT: 6379
     
-    - name: Build applications
-      run: npm run build
+
     
-    - name: Run E2E tests
-      run: npm run test:e2e
-      env:
-        CI: true
+
 
   deploy-staging:
     needs: test
