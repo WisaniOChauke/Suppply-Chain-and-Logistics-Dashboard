@@ -17,6 +17,7 @@ export function DashboardHeader() {
               <a href="/map" className="text-sm text-muted-foreground hover:text-foreground">Live Map</a>
               <a href="/exceptions" className="text-sm text-muted-foreground hover:text-foreground">Exceptions</a>
               <a href="/analytics" className="text-sm text-muted-foreground hover:text-foreground">Analytics</a>
+              <a href="/integrations" className="text-sm text-muted-foreground hover:text-foreground">Integrations</a>
               <a href="/supplier" className="text-sm text-muted-foreground hover:text-foreground">Supplier</a>
               <a href="/customer" className="text-sm text-muted-foreground hover:text-foreground">Customer</a>
               <a href="/settings" className="text-sm text-muted-foreground hover:text-foreground">Settings</a>

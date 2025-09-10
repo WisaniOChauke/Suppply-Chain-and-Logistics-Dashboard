@@ -8,6 +8,7 @@ import { ExceptionsModule } from './modules/exceptions/exceptions.module';
 import { PredictionModule } from './modules/prediction/prediction.module';
 import { PortalModule } from './modules/portal/portal.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { IntegrationsModule } from './modules/integrations/integrations.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AuthModule } from './modules/auth/auth.module';
     PredictionModule,
     PortalModule,
     AuthModule,
+    IntegrationsModule,
   ],
 })
 export class AppModule {}
