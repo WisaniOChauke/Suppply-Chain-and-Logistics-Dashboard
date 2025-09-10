@@ -1,6 +1,6 @@
 'use client'
 
-import { CustomerDashboard } from '@/components/portal/customer-dashboard'
+import { EnhancedCustomerDashboard } from '@/components/portal/enhanced-customer-dashboard'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Home, BarChart3, Package, Users, Settings } from 'lucide-react'
 import Link from 'next/link'
@@ -54,7 +54,7 @@ export default function CustomerPortalPage() {
           </div>
         </div>
       </header>
-      <CustomerDashboard />
+      <EnhancedCustomerDashboard />
     </div>
   )
 }

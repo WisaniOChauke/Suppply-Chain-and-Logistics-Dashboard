@@ -1,6 +1,6 @@
 'use client'
 
-import { SupplierDashboard } from '@/components/portal/supplier-dashboard'
+import { EnhancedSupplierDashboard } from '@/components/portal/enhanced-supplier-dashboard'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, Home, BarChart3, Package, Users, Settings } from 'lucide-react'
 import Link from 'next/link'
@@ -54,7 +54,7 @@ export default function SupplierPortalPage() {
           </div>
         </div>
       </header>
-      <SupplierDashboard />
+      <EnhancedSupplierDashboard />
     </div>
   )
 }
