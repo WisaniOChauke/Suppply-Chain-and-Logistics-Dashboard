@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { Logger } from 'pino';
+import { ShipmentsSeeder } from './modules/shipments/shipments.seeder';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -16,6 +16,10 @@ async function bootstrap() {
     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true,
   });
+  
+  // Seed demo data
+  const seeder = app.get(ShipmentsSeeder);
+  await seeder.seed();
   
   const port = process.env.PORT || 3001;
   await app.listen(port);

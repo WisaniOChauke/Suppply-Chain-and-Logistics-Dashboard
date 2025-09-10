@@ -60,7 +60,7 @@ export function ShipmentsList() {
           <div
             key={shipment.id}
             className="p-6 hover:bg-muted/50 cursor-pointer transition-colors"
-            onClick={() => setSelectedShipment(shipment.id)}
+            onClick={() => window.location.href = `/shipments/${shipment.id}`}
           >
             <div className="flex items-center justify-between">
               <div className="flex-1">

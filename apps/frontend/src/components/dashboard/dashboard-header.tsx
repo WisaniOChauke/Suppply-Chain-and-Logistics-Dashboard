@@ -8,6 +8,10 @@ export function DashboardHeader() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <h1 className="text-2xl font-bold text-foreground">Supply Chain Dashboard</h1>
+            <nav className="hidden md:flex space-x-4">
+              <a href="/" className="text-sm text-muted-foreground hover:text-foreground">Dashboard</a>
+              <a href="/map" className="text-sm text-muted-foreground hover:text-foreground">Live Map</a>
+            </nav>
           </div>
           
           <div className="flex items-center space-x-4">
