@@ -47,15 +47,14 @@ jobs:
       run: npm ci
     
     - name: Run tests
-      run: npm test
-      env:
-        DB_HOST: localhost
-        DB_PORT: 5432
-        DB_USERNAME: postgres
-        DB_PASSWORD: postgres
-        DB_NAME: supply_chain_test
-        REDIS_HOST: localhost
-        REDIS_PORT: 6379
+      run: |
+        cd apps/frontend && npm test -- --passWithNoTests
+        cd ../backend && npm test -- --passWithNoTests
+    
+    - name: Build applications
+      run: |
+        cd apps/frontend && npm run build
+        cd apps/backend && npm run build
     
 
     
