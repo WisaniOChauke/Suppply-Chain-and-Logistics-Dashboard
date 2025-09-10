@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { MapContainer } from '@/components/map/map-container'
 import { EventTimeline } from '@/components/shipments/event-timeline'
 import { ShipmentHeader } from '@/components/shipments/shipment-header'
+import { ETAPrediction } from '@/components/shipments/eta-prediction'
 import { useSocket } from '@/hooks/use-socket'
 
 interface ShipmentDetailProps {
@@ -41,9 +42,16 @@ export function ShipmentDetail({ shipmentId }: ShipmentDetailProps) {
     <div className="min-h-screen bg-background">
       <ShipmentHeader shipment={shipment} />
       <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <MapContainer shipment={shipment} />
-          <EventTimeline events={events || []} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <MapContainer shipment={shipment} />
+          </div>
+          <div className="space-y-6">
+            <EventTimeline events={events || []} />
+          </div>
+        </div>
+        <div className="mt-6">
+          <ETAPrediction shipmentId={shipmentId} />
         </div>
       </div>
     </div>

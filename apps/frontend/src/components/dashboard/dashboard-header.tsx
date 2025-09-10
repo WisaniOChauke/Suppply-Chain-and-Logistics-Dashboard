@@ -12,6 +12,7 @@ export function DashboardHeader() {
               <a href="/" className="text-sm text-muted-foreground hover:text-foreground">Dashboard</a>
               <a href="/map" className="text-sm text-muted-foreground hover:text-foreground">Live Map</a>
               <a href="/exceptions" className="text-sm text-muted-foreground hover:text-foreground">Exceptions</a>
+              <a href="/analytics" className="text-sm text-muted-foreground hover:text-foreground">Analytics</a>
             </nav>
           </div>
           

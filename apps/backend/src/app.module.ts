@@ -5,6 +5,7 @@ import { ShipmentsModule } from './modules/shipments/shipments.module';
 import { EventsModule } from './modules/events/events.module';
 import { WebSocketModule } from './modules/websocket/websocket.module';
 import { ExceptionsModule } from './modules/exceptions/exceptions.module';
+import { PredictionModule } from './modules/prediction/prediction.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ExceptionsModule } from './modules/exceptions/exceptions.module';
     EventsModule,
     WebSocketModule,
     ExceptionsModule,
+    PredictionModule,
   ],
 })
 export class AppModule {}
