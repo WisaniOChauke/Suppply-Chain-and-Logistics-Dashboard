@@ -7,6 +7,7 @@ import { WebSocketModule } from './modules/websocket/websocket.module';
 import { ExceptionsModule } from './modules/exceptions/exceptions.module';
 import { PredictionModule } from './modules/prediction/prediction.module';
 import { PortalModule } from './modules/portal/portal.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { PortalModule } from './modules/portal/portal.module';
     ExceptionsModule,
     PredictionModule,
     PortalModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
