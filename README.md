@@ -1,0 +1,2 @@
+# Suppply Chain and Logistics Dashboard
+An enterprise‑grade web application for tracking, managing, and optimising global shipments in real time. Features live map visualisation, predictive ETA and SLA breach alerts, role‑based dashboards, and supplier/customer portals. Built with React, TypeScript, Node.js, and WebSockets for low‑latency updates, with a focus on premium UX, scalability, and robust QA automation.
