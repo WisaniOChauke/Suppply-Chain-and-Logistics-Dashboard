@@ -27,9 +27,9 @@ export default function SupplierPortalPage() {
             
             <nav className="flex items-center space-x-2">
               <Button variant="ghost" size="sm" asChild>
-                <Link href="/" className="flex items-center">
-                  <Home className="h-4 w-4 mr-2" />
-                  Dashboard
+                <Link href="/map" className="flex items-center">
+                  <Package className="h-4 w-4 mr-2" />
+                  Live Map
                 </Link>
               </Button>
               <Button variant="ghost" size="sm" asChild>

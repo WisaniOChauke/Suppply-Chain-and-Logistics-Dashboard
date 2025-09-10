@@ -40,7 +40,6 @@ export function DashboardHeader() {
             )}
             <h1 className="text-2xl font-bold text-foreground">Supply Chain Dashboard</h1>
             <nav className="hidden md:flex space-x-4">
-              <a href="/" className="text-sm text-muted-foreground hover:text-foreground">Dashboard</a>
               <a href="/map" className="text-sm text-muted-foreground hover:text-foreground">Live Map</a>
               <a href="/exceptions" className="text-sm text-muted-foreground hover:text-foreground">Exceptions</a>
               <a href="/analytics" className="text-sm text-muted-foreground hover:text-foreground">Analytics</a>
