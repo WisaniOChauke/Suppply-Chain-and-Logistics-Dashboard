@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ShipmentsModule } from './modules/shipments/shipments.module';
 import { EventsModule } from './modules/events/events.module';
 import { WebSocketModule } from './modules/websocket/websocket.module';
+import { ExceptionsModule } from './modules/exceptions/exceptions.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { WebSocketModule } from './modules/websocket/websocket.module';
     ShipmentsModule,
     EventsModule,
     WebSocketModule,
+    ExceptionsModule,
   ],
 })
 export class AppModule {}

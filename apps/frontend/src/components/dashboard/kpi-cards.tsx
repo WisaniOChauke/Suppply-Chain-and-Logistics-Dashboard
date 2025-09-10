@@ -1,4 +1,5 @@
 import { TrendingUp, TrendingDown, Clock, AlertTriangle } from 'lucide-react'
+import Link from 'next/link'
 
 const kpis = [
   {
@@ -7,6 +8,7 @@ const kpis = [
     change: '+2.1%',
     trend: 'up',
     icon: TrendingUp,
+    href: null,
   },
   {
     title: 'Active Shipments',
@@ -14,6 +16,7 @@ const kpis = [
     change: '+12',
     trend: 'up',
     icon: Clock,
+    href: null,
   },
   {
     title: 'Avg Dwell Time',
@@ -21,6 +24,7 @@ const kpis = [
     change: '-1.2h',
     trend: 'down',
     icon: TrendingDown,
+    href: null,
   },
   {
     title: 'Exceptions',
@@ -28,6 +32,7 @@ const kpis = [
     change: '+5',
     trend: 'up',
     icon: AlertTriangle,
+    href: '/exceptions',
   },
 ]
 
@@ -38,8 +43,8 @@ export function KPICards() {
         const Icon = kpi.icon
         const isPositive = kpi.trend === 'up' && !kpi.title.includes('Exception')
         
-        return (
-          <div key={kpi.title} className="bg-card rounded-lg border p-6">
+        const CardContent = (
+          <>
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">{kpi.title}</p>
@@ -55,6 +60,18 @@ export function KPICards() {
               </span>
               <span className="text-sm text-muted-foreground ml-2">vs last week</span>
             </div>
+          </>
+        )
+
+        return (
+          <div key={kpi.title} className="bg-card rounded-lg border p-6 hover:bg-muted/50 transition-colors">
+            {kpi.href ? (
+              <Link href={kpi.href} className="block">
+                {CardContent}
+              </Link>
+            ) : (
+              CardContent
+            )}
           </div>
         )
       })}
