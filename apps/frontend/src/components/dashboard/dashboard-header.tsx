@@ -3,8 +3,15 @@
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { useAuth } from '@/hooks/use-auth'
-import { Search, Bell, User, LogOut, ArrowLeft } from 'lucide-react'
+import { Search, Bell, User, LogOut, ArrowLeft, Settings } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 export function DashboardHeader() {
   const { user, logout } = useAuth()
@@ -40,7 +47,6 @@ export function DashboardHeader() {
               <a href="/integrations" className="text-sm text-muted-foreground hover:text-foreground">Integrations</a>
               <a href="/supplier" className="text-sm text-muted-foreground hover:text-foreground">Supplier</a>
               <a href="/customer" className="text-sm text-muted-foreground hover:text-foreground">Customer</a>
-              <a href="/settings" className="text-sm text-muted-foreground hover:text-foreground">Settings</a>
             </nav>
           </div>
           
@@ -56,19 +62,37 @@ export function DashboardHeader() {
             <Button variant="ghost" size="icon">
               <Bell className="h-4 w-4" />
             </Button>
-            <ThemeToggle />
-            {user ? (
-              <>
-                <span className="text-sm text-muted-foreground">{user.name}</span>
-                <Button variant="ghost" size="icon" onClick={logout}>
-                  <LogOut className="h-4 w-4" />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Settings className="h-4 w-4" />
                 </Button>
-              </>
-            ) : (
-              <Button variant="ghost" size="icon">
-                <User className="h-4 w-4" />
-              </Button>
-            )}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem className="flex items-center justify-between">
+                  <span>Theme</span>
+                  <ThemeToggle />
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                {user ? (
+                  <>
+                    <DropdownMenuItem disabled>
+                      <User className="mr-2 h-4 w-4" />
+                      <span>{user.name}</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={logout}>
+                      <LogOut className="mr-2 h-4 w-4" />
+                      <span>Sign out</span>
+                    </DropdownMenuItem>
+                  </>
+                ) : (
+                  <DropdownMenuItem>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Sign in</span>
+                  </DropdownMenuItem>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
