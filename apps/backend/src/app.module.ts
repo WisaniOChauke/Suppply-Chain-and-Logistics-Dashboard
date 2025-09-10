@@ -6,6 +6,7 @@ import { EventsModule } from './modules/events/events.module';
 import { WebSocketModule } from './modules/websocket/websocket.module';
 import { ExceptionsModule } from './modules/exceptions/exceptions.module';
 import { PredictionModule } from './modules/prediction/prediction.module';
+import { PortalModule } from './modules/portal/portal.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { PredictionModule } from './modules/prediction/prediction.module';
     WebSocketModule,
     ExceptionsModule,
     PredictionModule,
+    PortalModule,
   ],
 })
 export class AppModule {}
