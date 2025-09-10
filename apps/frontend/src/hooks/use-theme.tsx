@@ -26,7 +26,6 @@ export function ThemeProvider({
   children,
   defaultTheme = 'system',
   storageKey = 'supply-chain-theme',
-  ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage?.getItem(storageKey) as Theme) || defaultTheme
@@ -51,15 +50,15 @@ export function ThemeProvider({
   }, [theme])
 
   const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
+    theme: theme,
+    setTheme: (newTheme: Theme) => {
+      localStorage.setItem(storageKey, newTheme)
+      setTheme(newTheme)
     },
   }
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider value={value}>
       {children}
     </ThemeProviderContext.Provider>
   )
