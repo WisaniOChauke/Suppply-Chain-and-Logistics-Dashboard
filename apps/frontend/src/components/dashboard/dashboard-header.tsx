@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
-import { useAuth } from '@/hooks/use-auth'
+import { useAuth } from '@/hooks'
 import { Search, Bell, User, LogOut } from 'lucide-react'
 
 export function DashboardHeader() {

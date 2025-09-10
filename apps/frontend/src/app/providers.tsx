@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider } from '@/hooks/use-theme'
-import { AuthProvider } from '@/hooks/use-auth'
+import { AuthProvider } from '@/hooks'
 import { useState } from 'react'
 
 export function Providers({ children }: { children: React.ReactNode }) {
