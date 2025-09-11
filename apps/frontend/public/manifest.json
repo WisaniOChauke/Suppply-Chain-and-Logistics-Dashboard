@@ -1,0 +1,41 @@
+{
+  "name": "Supply Chain Dashboard",
+  "short_name": "SupplyChain",
+  "description": "Enterprise-grade supply chain and logistics visibility platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["business", "productivity", "logistics"],
+  "shortcuts": [
+    {
+      "name": "Live Map",
+      "short_name": "Map",
+      "description": "View live shipment tracking",
+      "url": "/map",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Notifications",
+      "short_name": "Alerts",
+      "description": "View recent notifications",
+      "url": "/?tab=notifications",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
