@@ -1,7 +1,7 @@
 {
   "/customer/page": "app/customer/page.js",
   "/supplier/page": "app/supplier/page.js",
-  "/integrations/page": "app/integrations/page.js",
-  "/analytics/page": "app/analytics/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/exceptions/page": "app/exceptions/page.js",
+  "/map/page": "app/map/page.js"
 }
