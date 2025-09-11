@@ -9,7 +9,12 @@ interface User {
 
 export function useAuth() {
   return {
-    user: null as User | null,
+    user: {
+      id: 'guest-001',
+      email: 'guest@supply-chain.app',
+      name: 'Guest User',
+      role: 'guest'
+    } as User,
     login: async (email: string, password: string) => {},
     register: async (userData: { email: string; password: string; name: string }) => {},
     logout: () => {},
