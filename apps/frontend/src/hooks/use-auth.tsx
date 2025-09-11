@@ -89,7 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null)
   }
 
-  const value = {
+  const value: AuthContextType = {
     user,
     login,
     register,
