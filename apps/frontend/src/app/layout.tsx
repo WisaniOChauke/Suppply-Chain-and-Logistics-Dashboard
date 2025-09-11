@@ -12,9 +12,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Supply Chain Dashboard',
   description: 'Enterprise-grade supply chain and logistics visibility platform',
-  manifest: '/manifest.json',
-  themeColor: '#2563eb',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 }
 
 export default function RootLayout({
