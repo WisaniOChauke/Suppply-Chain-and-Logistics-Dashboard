@@ -22,13 +22,25 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
+    - name: Lint frontend
+      run: cd apps/frontend && npm run lint
+    
+    - name: Test frontend
+      run: cd apps/frontend && npm test -- --passWithNoTests --watchAll=false
+    
+    - name: Test backend
+      run: cd apps/backend && npm test -- --passWithNoTests --watchAll=false
+    
     - name: Build frontend
       run: cd apps/frontend && npm run build
-      continue-on-error: false
     
     - name: Build backend
       run: cd apps/backend && npm run build
-      continue-on-error: false
+    
+    - name: Type check
+      run: |
+        cd apps/frontend && npx tsc --noEmit
+        cd ../backend && npx tsc --noEmit
 
   deploy-production:
     needs: test
@@ -40,4 +52,8 @@ jobs:
     
     - name: Deploy to production
       run: |
-        echo "Deploying to production environment"
+        echo "All checks passed - deploying to production"
+        echo "Frontend build: ✅"
+        echo "Backend build: ✅"
+        echo "Tests: ✅"
+        echo "Linting: ✅"
