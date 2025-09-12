@@ -80,8 +80,8 @@ describe('ShipmentsService', () => {
           coordinates: { lat: 0, lng: 0 },
           timezone: 'UTC'
         },
-        estimatedDeparture: new Date(),
-        estimatedArrival: new Date(),
+        estimatedDeparture: '2024-01-15T00:00:00Z',
+        estimatedArrival: '2024-01-25T00:00:00Z',
         carrier: 'Test Carrier',
         mode: 'OCEAN' as const,
       };
