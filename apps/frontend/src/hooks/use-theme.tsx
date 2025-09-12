@@ -27,13 +27,21 @@ export function ThemeProvider({
   defaultTheme = 'system',
   storageKey = 'supply-chain-theme',
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage?.getItem(storageKey) as Theme) || defaultTheme
-  )
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const root = window.document.documentElement
+    setMounted(true)
+    const stored = typeof window !== 'undefined' ? localStorage.getItem(storageKey) as Theme : null
+    if (stored) {
+      setTheme(stored)
+    }
+  }, [storageKey])
 
+  useEffect(() => {
+    if (!mounted || typeof window === 'undefined') return
+    
+    const root = window.document.documentElement
     root.classList.remove('light', 'dark')
 
     if (theme === 'system') {
@@ -41,18 +49,19 @@ export function ThemeProvider({
         .matches
         ? 'dark'
         : 'light'
-
       root.classList.add(systemTheme)
       return
     }
 
     root.classList.add(theme)
-  }, [theme])
+  }, [theme, mounted])
 
   const value = {
     theme: theme,
     setTheme: (newTheme: Theme) => {
-      localStorage.setItem(storageKey, newTheme)
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(storageKey, newTheme)
+      }
       setTheme(newTheme)
     },
   }
