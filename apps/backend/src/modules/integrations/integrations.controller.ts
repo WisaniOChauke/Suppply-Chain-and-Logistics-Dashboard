@@ -17,7 +17,7 @@ export class IntegrationsController {
   async trackShipment(
     @Param('carrier') carrier: string,
     @Param('trackingNumber') trackingNumber: string,
-  ) {
+  ): Promise<any> {
     return this.carrierService.trackShipment(carrier, trackingNumber);
   }
 
@@ -34,7 +34,7 @@ export class IntegrationsController {
   async getWeatherAlongRoute(
     @Query('origin') origin: string,
     @Query('destination') destination: string,
-  ) {
+  ): Promise<any> {
     const route = {
       origin: JSON.parse(origin),
       destination: JSON.parse(destination),

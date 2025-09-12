@@ -1,7 +1,7 @@
 {
-  "name": "Supply Chain Dashboard",
-  "short_name": "SupplyChain",
-  "description": "Enterprise-grade supply chain and logistics visibility platform",
+  "name": "LogiSight - Supply Chain Intelligence",
+  "short_name": "LogiSight",
+  "description": "Enterprise-grade supply chain and logistics visibility platform powered by LogiSight",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

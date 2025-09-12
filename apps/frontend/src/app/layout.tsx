@@ -10,8 +10,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Supply Chain Dashboard',
-  description: 'Enterprise-grade supply chain and logistics visibility platform',
+  title: 'LogiSight - Supply Chain Intelligence',
+  description: 'Enterprise-grade supply chain and logistics visibility platform powered by LogiSight',
 }
 
 export default function RootLayout({

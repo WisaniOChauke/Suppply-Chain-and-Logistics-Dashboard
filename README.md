@@ -1,6 +1,6 @@
-# Supply Chain and Logistics Dashboard
+# LogiSight - Supply Chain Intelligence Platform
 
-An enterprise-grade web application for tracking, managing, and optimizing global shipments in real time. Features live map visualization, predictive ETA and SLA breach alerts, role-based dashboards, and supplier/customer portals.
+An enterprise-grade web application for tracking, managing, and optimizing global shipments in real time. LogiSight features live map visualization, predictive ETA and SLA breach alerts, role-based dashboards, and supplier/customer portals.
 
 ## 🚀 Quick Start
 
@@ -33,7 +33,7 @@ cp .env.example .env
 npm run dev
 ```
 
-Access the application:
+Access LogiSight:
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:3001
 - Storybook: http://localhost:6006

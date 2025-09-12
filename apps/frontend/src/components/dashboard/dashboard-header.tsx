@@ -40,7 +40,7 @@ export function DashboardHeader() {
                 <div className="h-6 w-px bg-border" />
               </>
             )}
-            <h1 className="text-2xl font-bold text-foreground">Supply Chain Dashboard</h1>
+            <h1 className="text-2xl font-bold text-foreground">LogiSight</h1>
             <nav className="hidden md:flex space-x-4">
               <a href="/map" className="text-sm text-muted-foreground hover:text-foreground">Live Map</a>
               <a href="/exceptions" className="text-sm text-muted-foreground hover:text-foreground">Exceptions</a>
