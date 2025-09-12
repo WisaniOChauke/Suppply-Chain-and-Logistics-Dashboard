@@ -11,6 +11,14 @@ import {
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
+export async function generateStaticParams() {
+  return [
+    { id: 'SH-AF-2024-089' },
+    { id: 'SH-AF-2024-091' },
+    { id: 'SH-EU-2024-156' }
+  ]
+}
+
 export default function ShipmentDetailPage({ params }: { params: { id: string } }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState('overview')
