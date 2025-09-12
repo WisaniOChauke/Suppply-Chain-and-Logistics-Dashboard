@@ -39,7 +39,7 @@ describe('ShipmentsService', () => {
 
       mockRepository.find.mockResolvedValue(mockShipments);
 
-      const result = await service.findAll();
+      const result = await service.findAll({ page: 1, limit: 10 });
 
       expect(result).toEqual(mockShipments);
       expect(mockRepository.find).toHaveBeenCalled();
@@ -62,9 +62,28 @@ describe('ShipmentsService', () => {
   describe('create', () => {
     it('should create and return a new shipment', async () => {
       const createShipmentDto = {
-        trackingNumber: 'TRK003',
-        origin: { address: 'Origin' },
-        destination: { address: 'Destination' },
+        orderNumber: 'ORD-003',
+        containerNumber: 'CNT-003',
+        origin: {
+          id: '1',
+          name: 'Origin Port',
+          code: 'ORP',
+          type: 'port',
+          coordinates: { lat: 0, lng: 0 },
+          timezone: 'UTC'
+        },
+        destination: {
+          id: '2',
+          name: 'Destination Port',
+          code: 'DST',
+          type: 'port',
+          coordinates: { lat: 0, lng: 0 },
+          timezone: 'UTC'
+        },
+        estimatedDeparture: new Date(),
+        estimatedArrival: new Date(),
+        carrier: 'Test Carrier',
+        mode: 'OCEAN' as const,
       };
 
       const mockShipment = { id: '3', ...createShipmentDto, status: 'PENDING' };

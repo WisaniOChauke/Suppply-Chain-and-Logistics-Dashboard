@@ -16,11 +16,12 @@ export class PortalService {
   ) {}
 
   async getSupplierDashboard(tenantId: string) {
-    const shipments = await this.shipmentRepository.find({
-      where: { supplierId: tenantId },
-      order: { createdAt: 'DESC' },
-      take: 50,
-    });
+    const shipments = await this.shipmentRepository
+      .createQueryBuilder('shipment')
+      .where('shipment.carrier = :tenantId', { tenantId })
+      .orderBy('shipment.createdAt', 'DESC')
+      .limit(50)
+      .getMany();
 
     return {
       totalShipments: shipments.length,
@@ -32,11 +33,12 @@ export class PortalService {
   }
 
   async getCustomerDashboard(tenantId: string) {
-    const shipments = await this.shipmentRepository.find({
-      where: { customerId: tenantId },
-      order: { createdAt: 'DESC' },
-      take: 50,
-    });
+    const shipments = await this.shipmentRepository
+      .createQueryBuilder('shipment')
+      .where('shipment.carrier = :tenantId', { tenantId })
+      .orderBy('shipment.createdAt', 'DESC')
+      .limit(50)
+      .getMany();
 
     return {
       totalOrders: shipments.length,
