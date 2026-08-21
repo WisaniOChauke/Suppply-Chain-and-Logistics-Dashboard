@@ -1,5 +1,7 @@
 # LogiSight - Supply Chain Intelligence Platform
 
+🔗 **Live:** [logisight.netlify.app](https://logisight.netlify.app/)
+
 An enterprise-grade web application for tracking, managing, and optimizing global shipments in real time. LogiSight features live map visualization, predictive ETA and SLA breach alerts, role-based dashboards, and supplier/customer portals.
 
 ## 🚀 Quick Start
@@ -13,7 +15,7 @@ An enterprise-grade web application for tracking, managing, and optimizing globa
 
 1. **Clone and setup**
 ```bash
-git clone <repository-url>
+git clone https://github.com/WisaniOChauke/Suppply-Chain-and-Logistics-Dashboard.git
 cd Suppply-Chain-and-Logistics-Dashboard
 npm install
 ```
